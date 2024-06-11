@@ -10,11 +10,14 @@ public:
         sort(arr1.begin(), arr1.end(), [&locs](const int &a, const int &b) {
             if (locs.find(a) != locs.end() && locs.find(b) != locs.end()) {
                 return locs[a] < locs[b];
-            } else if (locs.find(a) != locs.end()) {
+            } 
+            else if (locs.find(a) != locs.end()) {
                 return true;
-            } else if (locs.find(b) != locs.end()) {
+            } 
+            else if (locs.find(b) != locs.end()) {
                 return false;
-            } else {
+            } 
+            else {
                 return a<b;
             }
         });
