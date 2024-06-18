@@ -1,46 +1,46 @@
 class Solution {
 public:
     bool lemonadeChange(vector<int>& bills) {
-        unordered_map<int,int> mapper;
-        
+        // unordered_map<int,int> mapper;
+        int fives = 0,tens = 0;
         for(int bill:bills)
         {
             if(bill == 5)
-                mapper[5]++;
+                fives++;
 
             if(bill == 10)
             {
-                if(mapper[5]<1)
+                if(fives<1)
                     return false;
                 else
                 {
-                    mapper[5]--;
-                    mapper[10]++;
+                    fives--;
+                    tens++;
                 }
             }
 
             if(bill == 20)
             {
-                if(mapper[10]<1)
+                if(tens<1)
                 {
-                    if(mapper[5]<3)
+                    if(fives<3)
                         return false;
                     else
                     {
-                        mapper[5]-=3;
-                        mapper[20]++;
+                        fives-=3;
+                        // mapper[20]++;
                     }
 
                 }
                 else
                 {
-                    if(mapper[5]<1)
+                    if(fives<1)
                         return false;
                     else
                     {
-                        mapper[10]--;
-                        mapper[5]--;
-                        mapper[20]++;
+                        tens--;
+                        fives--;
+                        // mapper[20]++;
                     }
                 }
             }
