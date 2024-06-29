@@ -6,37 +6,37 @@ public:
 
         for(vector<int> edge:edges)
         {
-            sol[edge[1]].push_back(edge[0]);
+            sol[edge[1]].push_back(edge[0]);  //Finding which nodes are 1 step begind to the current node
         }
 
         for(int i=0;i<n;i++)
         {
             vector<int> ancestor;
-            set<int> visited;
-            childs(i,sol,visited);
+            unordered_set<int> visited;
+            childs(i,sol,visited); //Find all the children nodes of the current node amd put them inside visited
 
             for(int j = 0;j<n;j++)
             {
-                if(j == i)
+                if(j == i)  //If it is the same node, dont add it into the vector,proceed to next iteration
                     continue;
-                if(visited.find(j)!=visited.end())
+                if(visited.find(j)!=visited.end()) //If the node was visited at one point, add it to ancestors
                     ancestor.push_back(j);  
             }
-            ans.push_back(ancestor);
+            ans.push_back(ancestor); //Push bacl the ancestors of that node into the 2d vector
         }
 
 
         return ans;
     }
 
-    void childs(int i,vector<vector<int>>&sol,set<int>& visited)
+    void childs(int i,vector<vector<int>>&sol,unordered_set<int>& visited)
     {
-        visited.insert(i);
+        visited.insert(i);   //INserting the current element to the set as it has been visited
 
-        for(int k : sol[i])
+        for(int k : sol[i]) //traversing elements of the vector inside the 1st vector
         {
-            if(visited.find(k) == visited.end())
-                childs(k,sol,visited);
+            if(visited.find(k) == visited.end()) //if it has not been visited
+                childs(k,sol,visited);   //Recursively go thru it again
         }
     }
 };
