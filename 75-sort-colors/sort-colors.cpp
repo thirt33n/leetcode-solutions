@@ -1,27 +1,28 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-       int n = nums.size();
-       int low = 0;
-       int high = n-1;
-       int current =0;
-
-       while(current<=high)
-       {
-           if(nums[current] == 0)
-           {
-               swap(nums[current],nums[low]);
-                low++;
-                current++;
-           }
-           else if(nums[current] == 2)
-           {
-               swap(nums[current],nums[high]);
-               high--;
-           }
-           else{
-               current++;
-           }
-       }
+        int lastZero = 0,firstTwo = nums.size()-1; 
+        int i=0;
+        while(i<=firstTwo)
+        {
+            if(nums[i] == 2)
+            {
+                swap(nums[i],nums[firstTwo]);
+                firstTwo--;
+            }
+            else if(nums[i] == 0)
+            {
+                swap(nums[i],nums[lastZero]);
+                lastZero++;
+                i++;
+            }
+            else{
+                i++;
+            }
+            // cout<<lastZero<<" "<<firstTwo<<" "i;
+            for(int k:nums)
+                cout<<k<<" ";
+            cout<<endl;
+        }
     }
 };
