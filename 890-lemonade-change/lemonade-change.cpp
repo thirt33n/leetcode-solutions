@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool lemonadeChange(vector<int>& bills) {
-        // unordered_map<int,int> mapper;
+       
         int fives = 0,tens = 0;
         for(int bill:bills)
         {
@@ -28,7 +28,7 @@ public:
                     else
                     {
                         fives-=3;
-                        // mapper[20]++;
+                      
                     }
 
                 }
@@ -40,7 +40,7 @@ public:
                     {
                         tens--;
                         fives--;
-                        // mapper[20]++;
+                        
                     }
                 }
             }
