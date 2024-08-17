@@ -12,22 +12,19 @@
 class Solution {
 public:
 
-    void inorder(TreeNode *root,vector<int> &holder)
+    void findKsmall(TreeNode *root,int k,int &count,int &sol)
     {
-        if(!root)
-            return;
-
-        inorder(root->left,holder);
-        holder.push_back(root->val);
-        inorder(root->right,holder);
-        
+        if(!root)   return;
+        findKsmall(root->left,k,count,sol);
+        count++;
+        if(count == k)
+           { sol = root->val;}
+        findKsmall(root->right,k,count,sol); 
     }
 
     int kthSmallest(TreeNode* root, int k) {
-       vector<int> holder;
-        inorder(root,holder);
-        // int val;
-        
-        return holder[k-1];
+        int count = 0,sol = 0;
+         findKsmall(root,k,count,sol);
+         return sol;
     }
 };
